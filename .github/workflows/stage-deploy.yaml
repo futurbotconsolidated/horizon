@@ -1,0 +1,25 @@
+name: Stage Build & Deploy
+on:
+  push:
+    branches: [beta]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to DO
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{secrets.STAGE_SSH_HOST}}
+          key: ${{secrets.STAGE_SSH_KEY}}
+          username: ${{secrets.STAGE_SSH_USERNAME}}
+          
+          script: |
+            source venv/bin/activate
+            cd astro-apis
+            git stash
+            git pull origin beta
+            pip install -r requirements.txt
+            service astrothought restart
+            deactivate
+            echo "Deployment successful to DO"

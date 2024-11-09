@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>AstroThought Invoice for Wallet Recharge {{item.invoice.paygw_order}}</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+		
+		<style type="text/css">
+			table {
+			  border-collapse: collapse;
+			  width: 100%;
+			}
+
+			/*td, th, tr, p {
+			  border: 1px solid #dddddd;
+			}*/
+			th {background-color: orange; font-weight: 600; color: black;}
+
+			.small {font-size: 1rem;}
+			.smallest {font-size: .9rem;}
+			.bold {font-weight: bold;}
+			.right {text-align: right;}
+			.left {text-align: left;}
+			.top {vertical-align: top;}
+			p {margin: 0px; display: block;}
+			body {padding: 40px; font-family: 'Open Sans'; background-color: white; color: #444444; border-top: 40px solid orange; font-size: 1.2em;}
+			body > table {background-color: white; width: 100%;}
+		</style>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td>
+					<img src='https://s3.ap-south-1.amazonaws.com/storage.astrothought.com/logo.png' height="60">
+					<br>
+					<p class="bold">Lunar Oracle Private Limited</p>
+				</td>
+				<td>
+					<p style="text-transform: uppercase; font-size: 2.2rem;" class="right">Tax Invoice</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p class="small">Company ID : U72200DL2017PTC310943</p>
+					<p class="small">Plot No. 100C, 2nd floor, Sector 4</p>
+				</td>
+				<td class="top">
+					<p class="bold right"># {{item.invoice.paygw_order}}</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2" class="bold smallest right">Balance Due</td>
+			</tr>
+			<tr>
+				<td>
+					<p class="small">Vaishali, Ghaziabad 201012</p>
+					<p class="small">Uttar Pradesh, India</p>
+					<p class="small">GSTIN 09AAECL6367L1ZW</p>
+				</td>
+				<td class="top">
+					<p class="bold right" style="font-size: 1.3rem;">0.00</p>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><br/></td>
+			</tr>
+			<tr>
+				<td colspan="2" class="smallest">Bill To</td>
+			</tr>
+			<tr>
+				<td class="top">
+					<p class="small bold">{{item.wallet.user.user.full_name}}</p>
+					<p class="small">
+						{{item.wallet.user.place_of_birth}}
+						<br/>India
+						<br/>Email : {{item.wallet.user.user.email}}
+						<br/>Phone : {{item.wallet.user.user.phone}}
+					</p>
+				</td>
+				<td class="top right">
+					<table>
+						<tr>
+							<td style="padding: 6px;" class="small">Invoice Date:</td>
+							<td style="padding: 6px;" class="small">{{due_date|date:"d/m/Y"}}</td>
+						</tr>
+						<tr>
+							<td style="padding: 6px;" class="small">Terms:</td>
+							<td style="padding: 6px;" class="small">Net 15</td>
+						</tr>
+						<tr>
+							<td style="padding: 6px;" class="small">Due Date:</td>
+							<td style="padding: 6px;" class="small">{{due_date|date:"d/m/Y"}}</td>
+						</tr>
+						<tr>
+							<td style="padding: 6px;" class="small">P.O.# :</td>
+							<td style="padding: 6px;" class="small">{{item.invoice.paygw_order}}</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2"><br/><br/></td>
+			</tr>
+			<tr style="border-bottom: 1px solid lightgrey;">
+				<td colspan="2">
+					<table>
+						<tr class="small left">
+							<th style="padding-top: 5px; padding-bottom: 5px; padding-left: 20px;">#</th>
+							<th style="padding-top: 5px; padding-bottom: 5px; padding-left: 10px;">Item & Description</th>
+							<th style="padding-top: 5px; padding-bottom: 5px; padding-left: 10px;"></th>
+							<th style="padding-top: 5px; padding-bottom: 5px; padding-left: 10px;"></th>
+							<th style="padding-top: 5px; padding-bottom: 5px; padding-left: 10px;">GST</th>
+							<th style="padding-top: 5px; padding-bottom: 5px; padding-left: 10px;">Amount</th>
+						</tr>
+						<tr>
+							<td style="padding-top: 5px; padding-left: 20px;" class="small">1</td>
+							<td style="padding-top: 5px; padding-left: 10px;" class="small">{{title}}</td>
+							<td style="padding-top: 5px; padding-left: 10px;" class="small"></td>
+							<td style="padding-top: 5px; padding-left: 10px;" class="small"></td>
+							<td style="padding-top: 5px; padding-left: 10px;" class="small">{{gst}}</td>
+							<td style="padding-top: 5px; padding-left: 10px;" class="small">{{total}}</td>
+						</tr>
+						<tr>
+							<td colspan="4"></td>
+							<td class="smallest left" style="font-size: .7em; padding-bottom: 10px; padding-left: 10px;">18%</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td class="top">
+				</td>
+				<td class="top right">
+					<table>
+						<tr>
+							<td style="padding: 6px;" class="small">Sub Total</td>
+							<td style="padding: 6px;" class="small">{{sub_total}}</td>
+						</tr>
+						<tr>
+							<td style="padding: 6px;" class="small">GST (18%)</td>
+							<td style="padding: 6px;" class="small">{{gst}}</td>
+						</tr>
+						<tr class="bold">
+							<td style="padding: 6px;" class="small">Total</td>
+							<td style="padding: 6px;" class="small">{{total}}</td>
+						</tr>
+						<tr>
+							<td style="padding: 6px;" class="small">Payment Made</td>
+							<td style="padding: 6px;" class="small">{{total}}</td>
+						</tr>
+						<tr class="bold" style="background-color: whitesmoke;">
+							<td style="padding: 6px;" class="small">Balance Due</td>
+							<td style="padding: 6px;" class="small">0.00</td>
+						</tr>
+						<tr>
+							<td style="padding: 6px;" class="small">Total in Words</td>
+							<td style="padding: 6px; max-width: 100px; font-style: italic;" class="smallest bold">Indian {{words}} Only</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+
+		</table>
+	</body>
+</html>
